@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: mini-bank
+    name: Mini_Bank
     env: python
     plan: free
     buildCommand: ""
