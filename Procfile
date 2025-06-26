@@ -1,0 +1,1 @@
+web: Mini_Bank.wsgi
