@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Customer Details{% endblock %}
+
+{% block content %}
+{% if customers %}
+  <h2 align="center" style="color: green;"> Customer Details </h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Account No</th>
+        <th scope="col">Name</th>
+        <th scope="col">Father's Name</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Account Type</th>
+        <th scope="col">Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cust in customers %}
+      <tr>
+        <th scope="row">{{ cust.Customer_AccountNo }}</th>
+        <td>{{ cust.Customer_Name }}</td>
+        <td>{{ cust.Customer_FName }}</td>
+        <td>{{ cust.Customer_Phone }}</td>
+        <td>{{ cust.Customer_Email }}</td>
+        <td>{{ cust.Customer_Address }}</td>
+        <td>{{ cust.Customer_Account_Type }}</td>
+        <td>{{ cust.Customer_Balance }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+    <b style="color: #dc3545;">No customer records found</b>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login Form</title>
+  
+  <!-- Bootstrap and Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Custom Styles -->
+  <style>
+    body {
+      margin: 0;
+      padding-top: 80px; /* Space for navbar */
+      background: rgba(0, 0, 0, 0.75);
+      font-family: "Segoe UI", sans-serif;
+      min-height: 100vh;
+    }
+
+    .form-wrapper {
+      background: white;
+      border-radius: 12px;
+      width: 360px;
+      padding: 25px 30px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      margin: auto;
+      margin-top: 40px;
+    }
+
+    .form-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: #eee;
+      color: #333;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .tab-btn.active {
+      background: #f44336;
+      color: white;
+      border-radius: 6px;
+    }
+
+    .form-title {
+      margin-bottom: 20px;
+      color: #333;
+      text-align: center;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    .forgot-link {
+      font-size: 0.85rem;
+      color: #f44336;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .main-btn {
+      width: 100%;
+      background: #f44336;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .alert-danger {
+  color: #dc3545; /* Ensure text is visible */
+  background-color: #fff5f5; /* light red background */
+  border: 1px solid #dc3545;
+}
+
+
+    .main-btn:hover {
+      background: #d32f2f;
+    }
+
+    .bottom-text {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 0.9rem;
+    }
+
+    .bottom-text a {
+      color: #f44336;
+      text-decoration: none;
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+
+    @media (max-width: 400px) {
+      .form-wrapper {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#"><i class="bi bi-bank2 me-2 fs-4"></i>Mini Bank</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+{% if messages %}
+ <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+      <i class="bi bi-exclamation-triangle-fill me-2"></i>
+  <b style="color: #dc3545;"> {{messages }}</b> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+  </div>
+{% endif %}
+
+<!-- Login Form Centered -->
+  <div class="form-wrapper">
+    <div class="form-box">
+      <div class="form-header">
+        <button class="tab-btn active">Login</button>
+      </div>
+
+      <form method="POST" action="verify_elogin">
+        {% csrf_token %}
+        
+        <input type="text" name="id" placeholder="Enter Id" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="password" name="password" placeholder="Password" required>
+
+        <a href="e_forgot_password" class="forgot-link">Forgot password?</a>
+        <button type="submit" class="main-btn">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html> 

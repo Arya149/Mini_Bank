@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Mini Statement{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Mini Statement</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="table-primary text-center">
+        <tr>
+          <th>Date & Time</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Counterparty</th>
+          <th>Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for txn in transactions %}
+        <tr class="text-center {% if txn.From_account == acc_no %}table-danger{% else %}table-success{% endif %}">
+          <td>{{ txn.Timestamp|date:"Y-m-d H:i" }}</td>
+          <td>
+            {% if txn.From_account == acc_no %}
+              <span class="text-danger">
+                <i class="bi bi-arrow-up-circle-fill"></i> Debit
+              </span>
+            {% else %}
+              <span class="text-success">
+                <i class="bi bi-arrow-down-circle-fill"></i> Credit
+              </span>
+            {% endif %}
+          </td>
+          <td>₹{{ txn.Amount }}</td>
+          <td>
+            {% if txn.From_account == acc_no %}
+              {{ txn.To_account }}
+            {% else %}
+              {{ txn.From_account }}
+            {% endif %}
+          </td>
+          <td>{{ txn.Remarks|default:"—" }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="5" class="text-center text-muted">No transactions available.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

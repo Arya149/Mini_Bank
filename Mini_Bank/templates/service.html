@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Our Services - Mini Bank{% endblock title %}
+
+{% block content %}
+<section class="container my-5">
+  <h2 class="text-center mb-4">What We Offer</h2>
+  <div class="row g-4">
+    <div class="col-md-6 col-lg-4">
+      <div class="role-card">
+        <i  class="bi bi-person-plus"></i>
+        <h5>Account Creation Request</h5>
+        <a href="{% url 'customer_request'%}" class="btn btn-primary">click to create</a>
+        <p>
+          Visitors can fill out a detailed form to request the creation of a bank account.
+          This request is later reviewed by our manager or bank staff.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="role-card">
+        <i class="bi bi-shield-check"></i>
+        <h5>Account Approval System</h5>
+        <p>
+          Upon submission, your account application is processed and either approved or rejected
+          by the manager. Approved users receive an account number via email.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="role-card">
+        <i class="bi bi-lock-fill"></i>
+        <h5>Secure Login</h5>
+        <p>
+          Once approved, users can securely log in using their unique account number and access banking services.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="role-card">
+        <i class="bi bi-currency-exchange"></i>
+        <h5>Fund Transfer</h5>
+        <p>
+          Users can conveniently transfer money to other accounts. Both the sender and receiver
+          are notified via automated email upon successful transactions.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="role-card">
+        <i class="bi bi-credit-card-2-front-fill"></i>
+        <h5>Employee Credit & Debit Access</h5>
+        <p>
+          Bank employees are granted access to manually credit or debit funds into a customer's account
+          for administrative or operational purposes.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="role-card">
+        <i class="bi bi-envelope-paper-heart-fill"></i>
+        <h5>Instant Email Notifications</h5>
+        <p>
+          Whether it's a new account approval or a completed transaction, our system ensures
+          prompt email alerts to keep users informed in real-time.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

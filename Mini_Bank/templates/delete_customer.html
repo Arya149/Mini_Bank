@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Employee Dashboard{% endblock %}
+
+{% block content %}
+{% if messages %}
+ <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+      <i class="bi bi-exclamation-triangle-fill me-2"></i>
+  <b style="color: #dc3545;"> {{messages }}</b> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+  </div>
+{% endif %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow rounded-4">
+        <div class="card-body p-4">
+          <h3 class="text-center mb-4">Delete A Customer</h3>
+          <form method="POST" action="delete_customer">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="Account NO" class="form-label"> Account Number</label>
+              <input type="text" class="form-control" name="account" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="first_name" class="form-label"> Name</label>
+              <input type="text" class="form-control" name="name" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" name="email" required>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="reset" class="btn btn-primary px-4">Reset</button>
+              <button type="submit" class="btn btn-primary px-4">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content%}

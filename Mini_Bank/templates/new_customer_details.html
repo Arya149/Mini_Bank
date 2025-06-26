@@ -1,0 +1,77 @@
+ {% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Customer Details{% endblock %}
+
+{% block content %}
+{% if messages %}
+ <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+      <i class="bi bi-exclamation-triangle-fill me-2"></i>
+  <b style="color: #dc3545;"> {{messages }}</b> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+  </div>
+{% endif %}
+{% if customer_det %}
+
+  <h2 align="center" style="color: green;"> Customer Details </h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Account Type</th>
+        <th scope="col">Balance</th>
+        <th scope="col">View</th>
+        <th scope="col">Accept</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cust in customer_det %}
+      <tr>
+        <td>{{ cust.Customer_Name }}</td>
+        
+        
+        <td>{{ cust.Customer_Email }}</td>
+        <td>{{ cust.Customer_Address }}</td>
+        <td>{{ cust.Customer_Account_Type }}</td>
+        <td>{{ cust.Customer_Balance }}</td>
+        <td>
+  <form method="post" action="new_customer_view">
+    {% csrf_token %}
+    <input type="hidden" name="email" value="{{ cust.Customer_Email }}">
+    <button type="submit" style="background-color: yellow;" >View</button>
+  </form>
+</td>
+        <td>
+
+  <form method="post" action="add_new_customer">
+    {% csrf_token %}
+    <input type="hidden" name="email" value="{{ cust.Customer_Email }}">
+    <button type="submit" style="background-color: green;" >Accept</button>
+  </form>
+</td>
+
+<td>
+  <form method="post" action="delete_new_customer">
+    {% csrf_token %}
+    <input type="hidden" name="email" value="{{ cust.Customer_Email }}">
+    <button type="submit" style="background-color: red;" >Delete</button>
+  </form>
+</td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+    <b style="color: #dc3545;">No customer records found</b>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endif %}
+{% endblock content %}

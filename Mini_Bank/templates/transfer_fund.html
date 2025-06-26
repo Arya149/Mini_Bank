@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Transfer Funds{% endblock %}
+
+{% block content %}
+
+        {% if messages %}
+ <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+      <i class="bi bi-exclamation-triangle-fill me-2"></i>
+  <b style="color: green;"> {{messages }}</b> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+  </div>
+{% endif %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white text-center">
+          <h4>Transfer Funds</h4>
+        </div>
+        <div class="card-body">
+
+
+          <form method="POST" action="transfer_fund">
+            {% csrf_token %}
+
+            <div class="mb-3">
+              <label for="from_account" class="form-label">From Account</label>
+              <input type="text" id="from_account" name="from_account" class="form-control" 
+                     value="{{ customer.Customer_AccountNo }}" readonly>
+            </div>
+
+            <div class="mb-3">
+              <label for="to_account" class="form-label">Recipient Account Number</label>
+              <input type="text" id="to_account" name="to_account" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="amount" class="form-label">Amount (₹)</label>
+              <input type="number" step="0.01" min="1" id="amount" name="amount" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="remarks" class="form-label">Remarks (Optional)</label>
+              <textarea id="remarks" name="remarks" class="form-control" rows="2"></textarea>
+            </div>
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-success px-4">Transfer</button>
+              <button type="reset" class="btn btn-success px-4">Cancel</a>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Employee Dashboard{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/employee_home.css' %}">
+{% endblock %}
+
+{% block content %}
+{% if messages %}
+<div class="alert alert-info alert-dismissible fade show mt-3" role="alert">
+  <i class="bi bi-info-circle-fill me-2"></i>
+  <b style="color: #0d6efd;">{{ messages }}</b> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+<div class="container mt-5">
+  <div class="text-center mb-5">
+    <h1>Welcome, {{ Name }}</h1>
+    <p class="lead">Access your dashboard to manage daily banking operations.</p>
+  </div>
+
+  <!-- Quick Summary Card -->
+  <div class="mb-4 text-center">
+    <div class="card shadow-sm mx-auto" style="max-width: 600px;">
+      <div class="card-body">
+        <h5 class="card-title">Quick Summary</h5>
+        <p class="card-text">
+          Employee ID: <strong>{{ Id }}</strong> | 
+          Role: <strong>Casher</strong> 
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <!-- Customers -->
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <i class="bi bi-people fs-1 text-primary"></i>
+          <h5 class="card-title mt-3">Customers</h5>
+          <p class="card-text">View and update customer information.</p>
+          <a href="employee_customer" class="btn btn-primary">Manage Customers</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transfer Funds -->
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <i class="bi bi-arrow-left-right fs-1 text-warning"></i>
+          <h5 class="card-title mt-3">Transfer Funds</h5>
+          <p class="card-text">Send money to another account.</p>
+          <a href="offical_fund_transfer" class="btn btn-warning">Transfer Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deposit Money -->
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <i class="bi bi-bank fs-1 text-success"></i>
+          <h5 class="card-title mt-3">Deposit Money</h5>
+          <p class="card-text">Deposit cash into customer accounts.</p>
+          <a href="deposit_money" class="btn btn-success">Deposit</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service Requests -->
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <i class="bi bi-journal-text fs-1 text-warning"></i>
+          <h5 class="card-title mt-3">Service Requests</h5>
+          <p class="card-text">Respond to and manage customer service requests.</p>
+          <a href="" class="btn btn-warning">Handle Requests</a>
+        </div>
+      </div>
+    </div>
+<!-- Withdraw Money -->
+<div class="col-md-4">
+  <div class="card shadow-sm text-center">
+    <div class="card-body">
+      <i class="bi bi-cash-coin fs-1 text-danger"></i>
+      <h5 class="card-title mt-3">Withdraw / Credit</h5>
+      <p class="card-text">Withdraw or credit money from customer accounts.</p>
+      <a href="withdraw_money" class="btn btn-danger">Withdraw</a>
+    </div>
+  </div>
+</div>
+
+    <!-- Mini Statement -->
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <i class="bi bi-receipt fs-1 text-danger"></i>
+          <h5 class="card-title mt-3">Mini Statement</h5>
+          <p class="card-text">View recent transactions of a customer account.</p>
+          <a href="view_transactions" class="btn btn-danger">View Mini Statement</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

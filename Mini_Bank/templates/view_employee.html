@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Employee Details{% endblock %}
+
+{% block content %}
+{% if details %}
+  <h2 align="center" style="color: green;"> Employee Details </h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Employee Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for x in details %}
+      <tr>
+        <th scope="row">{{ x.Employee_Id }}</th>
+        <td>{{ x.Employee_Name }}</td>
+        <td>{{ x.Employee_Email }}</td>
+        <td>{{ x.Employee_Mobile}}</td>
+        <td>{{ x.Employee_Address }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+    <b style="color: #dc3545;">No records found</b>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endif %}
+{% endblock content %}

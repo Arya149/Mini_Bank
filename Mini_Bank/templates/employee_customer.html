@@ -1,0 +1,62 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Customer Management{% endblock %}
+
+
+{% block content %}
+{% if messages %}
+  <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+    <b style="color: #dc3545;">{{ messages }}</b>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endif %}
+
+<div class="container mt-5">
+  <div class="text-center mb-5">
+    <h1>Customer Management</h1>
+    <p class="lead">Add, remove, and manage customer accounts and details.</p>
+  </div>
+
+  <div class="row g-4 justify-content-center">
+    <!-- Add Customer Card -->
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <i class="bi bi-person-plus-fill fs-1 text-primary"></i>
+          <h5 class="card-title mt-3">Add Customer</h5>
+          <p class="card-text">Register a new customer and open an account.</p>
+          <a href="add_customer" class="btn btn-primary">Add Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Customer Card -->
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <i class="bi bi-person-dash-fill fs-1 text-danger"></i>
+          <h5 class="card-title mt-3">Delete Customer</h5>
+          <p class="card-text">Remove a customer and close the account.</p>
+          <a href="delete_customer" class="btn btn-danger">Delete Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Customer Details Card -->
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <i class="bi bi-person-lines-fill fs-1 text-success"></i>
+          <h5 class="card-title mt-3">Customer Details</h5>
+          <p class="card-text">View and manage existing customer information.</p>
+          <a href="customer_details" class="btn btn-success">View Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

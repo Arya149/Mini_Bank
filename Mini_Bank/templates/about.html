@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us - Mini Bank{% endblock title %}
+
+{% block content %}
+<section class="container my-5">
+  <h2 class="text-center mb-4">About This Project</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card shadow p-4">
+        <p>
+          <strong>Mini Bank</strong> is a web-based banking application designed to emulate the core features
+          of a real-world banking system. Developed as a learning project using <strong>Django</strong> and <strong>Bootstrap</strong>,
+          it offers a seamless experience for users, employees, and administrators alike.
+        </p>
+        <ul class="list-group list-group-flush mt-3">
+          <li class="list-group-item">✔️ Users can submit account creation requests and receive updates via email.</li>
+          <li class="list-group-item">✔️ Managers can approve or reject account requests through a secured interface.</li>
+          <li class="list-group-item">✔️ Approved users can log in using account numbers and perform fund transfers.</li>
+          <li class="list-group-item">✔️ Employees can credit or debit funds into any customer account as required.</li>
+          <li class="list-group-item">✔️ Every critical action is logged and notified via real-time email updates.</li>
+        </ul>
+        <p class="mt-4">
+          This project demonstrates practical applications of <strong>authentication, role-based access control, form handling,
+          database operations</strong>, and <strong>email integration</strong>. It serves as an ideal example of a beginner-to-intermediate
+          level full-stack development project.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

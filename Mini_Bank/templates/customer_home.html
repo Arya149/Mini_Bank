@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Customer Dashboard{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/customer_home.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="text-center mb-5">
+    <h1>Welcome, {{ customer.Customer_Name }}</h1>
+    <p class="lead">Here's an overview of your account and recent activity.</p>
+  </div>
+
+  <div class="row g-4">
+    <!-- Account Summary -->
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <i class="bi bi-credit-card fs-1 text-primary"></i>
+          <h5 class="card-title mt-3">Account Balance</h5>
+          <p class="card-text fs-4">₹{{ customer.Customer_Balance }}</p>
+          <a href="customer_view" class="btn btn-primary">View Account</a>
+        </div>
+      </div>
+    </div>
+      <!-- Fund Transfer -->
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <i class="bi bi-arrow-left-right fs-1 text-warning"></i>
+          <h5 class="card-title mt-3">Transfer Funds</h5>
+          <p class="card-text">Send money to another account.</p>
+          <a href="transfer_fund" class="btn btn-warning">Transfer Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Transactions -->
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <i class="bi bi-clock-history fs-1 text-success"></i>
+          <h5 class="card-title mt-3">Recent Transactions</h5>
+          <p class="card-text">See your recent deposits and withdrawals.</p>
+          <a href="recent_transactions" class="btn btn-success">View Transactions</a>
+        </div>
+      </div>
+    </div>
+{% endblock %}
