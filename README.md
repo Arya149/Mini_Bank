@@ -30,7 +30,7 @@ I have hands-on experience in building **secure, scalable Django applications** 
 - Integrated a notification system and visual task status indicators.  
 - **Tech**: Django, Python, HTML/CSS, Bootstrap  
 
-🔗 *[Add Project Repository Link Here]*  
+
 
 ---
 
@@ -41,7 +41,7 @@ I have hands-on experience in building **secure, scalable Django applications** 
 - Managers can manage employees and view full transaction logs.  
 - **Tech**: Django, Python, MySQL, Bootstrap, JavaScript  
 
-🔗 *[Add Project Repository Link Here]*  
+
 
 ---
 
